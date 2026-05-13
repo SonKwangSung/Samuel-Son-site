@@ -392,6 +392,7 @@
       .about-inner { grid-template-columns: 1fr; gap: 30px; }
       #about { padding: 70px 24px; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 30px 24px; }
+      .book-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -498,29 +499,29 @@
         style="width: 100%; aspect-ratio: 16/9; display: block; border: 1px solid var(--border);"
       ></iframe>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <p class="card-tag">Single Sermon</p>
-        <h3>The Prodigal Returns to Koreatown</h3>
-        <p>What happens when you read one of Jesus's most beloved parables through the lens of immigration, shame, and a mother waiting at the airport.</p>
-        <a href="#" class="card-link">Listen</a>
-      </div>
-      <div class="card">
-        <p class="card-tag">Chapel Talk</p>
-        <h3>Holy Disruption</h3>
-        <p>On the moments when life refuses to cooperate with our plans — and why that might be the most sacred thing that can happen to us.</p>
-        <a href="#" class="card-link">Listen</a>
-      </div>
-    </div>
   </section>
 
   <hr class="divider" />
 
   <!-- POETRY -->
   <section id="poetry" class="content-section">
-    <p class="section-eyebrow">Poetry</p>
-    <h2 class="section-title">Lines That Break</h2>
-    <p class="section-intro">Poetry is where I let the sentence breathe — and break — in ways prose cannot allow.</p>
+    <p class="section-eyebrow">Spoken Word</p>
+    <h2 class="section-title">Poetry</h2>
+    <p class="section-intro">Poetry is where sentences breathe — and break.</p>
+
+    <!-- Book Feature -->
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--border);">
+      <a href="https://www.amazon.com/America-My-Samuel-Son-ebook/dp/B0FNN7YWV5/" target="_blank" rel="noopener" style="display: block; flex-shrink: 0;">
+        <img src="America_My_America_front_cover_ebook.jpg" alt="America My America — Samuel Son" style="width: 160px; display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.18);" />
+      </a>
+      <div>
+        <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);margin-bottom:10px;">Book of Poems</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;margin-bottom:16px;line-height:1.2;">America My America</h3>
+        <p style="font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:24px;">A collection of poems at once personal and political, where immigrant families stake their claims, language cuts and heals, and the American dream is both invitation and exclusion.</p>
+        <blockquote style="border-left:2px solid var(--accent);padding-left:20px;margin:0 0 28px;font-style:italic;color:var(--mid);font-size:0.95rem;line-height:1.8;">"Samuel Son seamlessly weaves together that which we so often try to keep separate — the ordinary and the holy, spirit and body, culture, identity, and faith. In doing so, his writing guides us to an attentiveness that reveals the sacred in our own daily lives."</blockquote>
+        <a href="https://www.amazon.com/America-My-Samuel-Son-ebook/dp/B0FNN7YWV5/" target="_blank" rel="noopener" class="hero-cta" style="display:inline-block;text-decoration:none;">Order on Amazon ↗</a>
+      </div>
+    </div>
 
     <div class="poem-block">
       <p class="poem-title">Banchan</p>
