@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Son</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --mid: #555;
+      --light: #aaa;
+      --border: #e8e8e8;
+      --accent: #c0392b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 60px 80px;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-roles {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 28px;
+    }
+
+    .hero-roles span { margin: 0 8px; }
+    .hero-roles span:first-child { margin-left: 0; }
+
+    .hero-quote {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.8;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--black);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--accent); }
+
+    .hero-photo {
+      position: relative;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 460px;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      top: -20px; left: -20px;
+      right: 20px; bottom: 20px;
+      border: 1px solid var(--border);
+      z-index: -1;
+    }
+
+    /* SPAMKIMCHI BANNER */
+    #spamkimchi {
+      background: var(--black);
+      color: #fff;
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    .show-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    #spamkimchi h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    #spamkimchi h2 em {
+      font-style: italic;
+      color: #e8c4be;
+    }
+
+    .show-details {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 36px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .show-date-grid {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .show-date-item {
+      text-align: center;
+    }
+
+    .show-date-item .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .show-date-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+    }
+
+    .ticket-btn {
+      display: inline-block;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 14px 36px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .ticket-btn:hover { background: #fff; color: var(--black); }
+
+    /* SECTION SHARED */
+    section.content-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 640px;
+      margin-bottom: 60px;
+      line-height: 1.8;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* CARD GRIDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .card-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* POETRY — centered, different treatment */
+    #poetry .poem-block {
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    #poetry .poem-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    #poetry .poem-lines {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 2.2;
+      white-space: pre-line;
+    }
+
+    /* ABOUT STRIP */
+    #about {
+      background: #fafafa;
+      padding: 100px 60px;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--light);
+      max-width: 100%;
+    }
+
+    footer a { color: var(--light); text-decoration: none; }
+    footer a:hover { color: var(--black); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+      #home {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        gap: 40px;
+      }
+      .hero-photo { order: -1; }
+      .hero-photo img { max-width: 100%; }
+      section.content-section { padding: 70px 24px; }
+      #spamkimchi { padding: 70px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 30px; }
+      #about { padding: 70px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#home">Samuel Son</a>
+    <ul class="nav-links">
+      <li><a href="#spamkimchi">Show</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#preaching">Preaching</a></li>
+      <li><a href="#poetry">Poetry</a></li>
+      <li><a href="#comedy">Comedy</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="home">
+    <div class="hero-text">
+      <p class="hero-roles">
+        Storyteller <span>·</span> Writer <span>·</span> Preacher <span>·</span> Poet <span>·</span> Comedian
+      </p>
+      <h1>Samuel<br><em>Son</em></h1>
+      <p class="hero-quote">
+        "For a while, I separated these personas. But I realized they were all seeking to tell my story, just in different forms, each of them powerful in their own way."
+      </p>
+      <a href="#spamkimchi" class="hero-cta">Upcoming Show ↓</a>
+    </div>
+    <div class="hero-photo">
+      <!-- Replace src with your actual image path or embed as base64 -->
+      <img src="Rev__Samuel_Son-16.jpg" alt="Samuel Son" onerror="this.style.background='#f0ede8';this.style.minHeight='500px';this.style.display='block';" />
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SPAMKIMCHI SHOW -->
+  <section id="spamkimchi">
+    <p class="show-eyebrow">Upcoming Show</p>
+    <h2><em>Spam</em>kimchi</h2>
+    <p class="show-details">
+      A storytelling show about growing up between two worlds — where processed American meat meets fermented Korean tradition. Funny, tender, and unapologetically both.
+    </p>
+    <div class="show-date-grid">
+      <div class="show-date-item">
+        <span class="label">Date</span>
+        <span class="value">TBA 2025</span>
+      </div>
+      <div class="show-date-item">
+        <span class="label">Venue</span>
+        <span class="value">Louisville, KY</span>
+      </div>
+      <div class="show-date-item">
+        <span class="label">Format</span>
+        <span class="value">One-Man Show</span>
+      </div>
+    </div>
+    <a href="#" class="ticket-btn">Get Tickets</a>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing" class="content-section">
+    <p class="section-eyebrow">Writing</p>
+    <h2 class="section-title">Words on the Page</h2>
+    <p class="section-intro">Essays, stories, and reflections on faith, identity, culture, and the spaces in between.</p>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-tag">Essay</p>
+        <h3>The In-Between Places</h3>
+        <p>On living in the hyphen — Korean-American, sacred-secular, funny-serious — and finding that the hyphen itself is where life happens.</p>
+        <a href="#" class="card-link">Read more</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Personal Essay</p>
+        <h3>What My Father Couldn't Say</h3>
+        <p>A meditation on silence as a second language, and what it taught me about love, duty, and the stories we carry without words.</p>
+        <a href="#" class="card-link">Read more</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Cultural Commentary</p>
+        <h3>On Spam, Kimchi & Belonging</h3>
+        <p>The strange alchemy of two foods that have no business being together — and yet became something entirely their own, entirely mine.</p>
+        <a href="#" class="card-link">Read more</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PREACHING -->
+  <section id="preaching" class="content-section">
+    <p class="section-eyebrow">Preaching</p>
+    <h2 class="section-title">Word Made Flesh</h2>
+    <p class="section-intro">Sermons that take the ancient text seriously and the human condition personally — because the Gospel is always a story about us.</p>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-tag">Sermon Series</p>
+        <h3>Table, Tent & Temple</h3>
+        <p>A series on the spaces where God shows up — not always where we expect, often where we are most vulnerable.</p>
+        <a href="#" class="card-link">Listen</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Single Sermon</p>
+        <h3>The Prodigal Returns to Koreatown</h3>
+        <p>What happens when you read one of Jesus's most beloved parables through the lens of immigration, shame, and a mother waiting at the airport.</p>
+        <a href="#" class="card-link">Listen</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Chapel Talk</p>
+        <h3>Holy Disruption</h3>
+        <p>On the moments when life refuses to cooperate with our plans — and why that might be the most sacred thing that can happen to us.</p>
+        <a href="#" class="card-link">Listen</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- POETRY -->
+  <section id="poetry" class="content-section">
+    <p class="section-eyebrow">Poetry</p>
+    <h2 class="section-title">Lines That Break</h2>
+    <p class="section-intro">Poetry is where I let the sentence breathe — and break — in ways prose cannot allow.</p>
+
+    <div class="poem-block">
+      <p class="poem-title">Banchan</p>
+      <p class="poem-lines">
+My mother sets seven small dishes
+before the rice even arrives —
+abundance as argument,
+love as logistics.
+
+I learn her language
+by watching her hands.
+She has never said
+I am proud of you.
+
+She has said: eat.
+      </p>
+    </div>
+
+    <div class="poem-block">
+      <p class="poem-title">Pulpit</p>
+      <p class="poem-lines">
+I stand in the old wood box
+and try to make the dead words walk.
+
+Sometimes they do.
+Sometimes they just stare back at me
+like a congregation
+waiting to be surprised.
+
+Surprise us, they say.
+We have been sitting here a long time.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- COMEDY -->
+  <section id="comedy" class="content-section">
+    <p class="section-eyebrow">Comedy</p>
+    <h2 class="section-title">The Serious Business of Laughter</h2>
+    <p class="section-intro">Comedy is the shortest distance between two people. And sometimes between a person and the truth they've been avoiding.</p>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-tag">Set</p>
+        <h3>Reverend's Night Out</h3>
+        <p>What happens when a Korean-American pastor tells jokes? Mostly confusion, some catharsis, and at least one deacon who walked out. Twice.</p>
+        <a href="#" class="card-link">Watch</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Clip</p>
+        <h3>My Dad's English</h3>
+        <p>A love letter to immigrant syntax — the grammar that built me, even when it bent every rule in the book.</p>
+        <a href="#" class="card-link">Watch</a>
+      </div>
+      <div class="card">
+        <p class="card-tag">Feature</p>
+        <h3>SpamKimchi: The Show</h3>
+        <p>The full one-man storytelling show. Coming soon to a stage near you. (Kimchi not included. Spam is optional.)</p>
+        <a href="#spamkimchi" class="card-link">Upcoming dates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div>
+        <p class="about-label">One story.<br>Many<br><em style="font-family:'Playfair Display',serif;">forms.</em></p>
+      </div>
+      <div class="about-body">
+        <p>
+          Samuel Son is a storyteller, writer, preacher, poet, and comedian. For a long time, he kept those identities in separate rooms, worried that mixing them would dilute each one. Instead, he discovered they were all the same impulse: to tell the truth in a way that lands.
+        </p>
+        <p>
+          "For a while, I separated these personas. But I realized they were all seeking to tell my story, just in different forms, each of them powerful in their own way. Each form offers a different emotional register to connect with others. This is the power of stories — it connects me with others and in that connects me to myself."
+        </p>
+        <p>
+          He is Korean-American, a pastor, a husband, a father, and a person who genuinely believes that Spam and kimchi are better together than apart. He lives in Louisville, Kentucky.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Samuel Son</span>
+    <span>
+      <a href="mailto:hello@samuelson.com">hello@samuelson.com</a>
+    </span>
+  </footer>
+
+</body>
+</html>
